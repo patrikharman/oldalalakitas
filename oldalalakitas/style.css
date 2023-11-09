@@ -1,0 +1,114 @@
+/*Reszponzív weboldal*/
+* {
+    margin: 0;
+    padding: 0;
+    /*minden html elem kűlső és belső margóját 0-ra tesszük*/
+    box-sizing: border-box; /*elem szélességébe width értékbe beletartozik a padding és a border is */
+}
+img {
+    width: 100%;
+}
+
+body {
+    width: 90%;
+    max-width: 900px;
+    margin: auto;
+    background-image: url("hatter.jpg");
+}
+main {
+    background-color: aqua;
+    /* Tároló, szülőelem */
+    display: grid;
+    grid-template-columns: 100px 3fr 1fr;
+    grid-template-areas:
+    "h h h" 
+    "n n n"
+    "b a j"
+    "f f f";
+}
+
+header {
+    grid-area: h;
+}
+article {
+    grid-area: a;
+}
+nav {
+    grid-area: n;
+}
+footer {
+    grid-area: f;
+}
+aside#bal {
+    grid-area: b;
+}
+aside#jobb {
+    grid-area: j;
+}
+
+
+header, nav, article, footer, aside {
+    border: 1px solid black;
+    padding: 10px;
+}
+
+nav ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 10px;
+    list-style-type: none;
+    text-align: center;
+
+}
+nav li {
+    background-color:lightblue;
+    padding: 5px;
+    
+}
+nav a {
+    text-decoration: none;
+}
+
+/* tablet nézet - reszponzititás kialakítása */
+@media only screen and (max-width: 700px) {/* töréspont*/
+    body, main {
+      background-color: lightblue;
+      width: 100%;
+    }
+
+    main {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+        "h h" 
+        "n n"
+        "a b"
+        "j j"
+        "f f";
+    }
+
+  }
+  /* mobil nézet - reszponzititás kialakítása */
+  @media only screen and (max-width: 450px) {/* töréspont*/
+    body, main {
+      background-color: lightblue;
+      width: 100%;
+    }
+
+    main {
+        font-size: 12px+10vw;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+        "h" 
+        "n"
+        "a"
+        "b"
+        "j"
+        "f";
+    }
+    nav ul {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0px;
+        
+    }
+}
